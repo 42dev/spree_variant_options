@@ -113,7 +113,10 @@ function VariantOptions(params) {
 
     $.each(sels, function(key, value) {
       key = value.split('-');
-      var v = options[key[0]][key[1]];
+      var v = options[key[0]];
+      if (!v)
+        return 1; //skip to next iteration of .each loop
+      v = v[key[1]];
       keys = $.keys(v);
       var m = Array.find_matches(selection.concat(keys));
       if (selection.length == 0) {
