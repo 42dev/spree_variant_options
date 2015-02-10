@@ -44,7 +44,7 @@ function VariantOptions(params) {
 
 
   function init() {
-    divs = $('#product-variants .variant-options');
+    divs = $(wrapper).find('#product-variants .variant-options');
     //Enable Colors
     update();
     enable_size(parent.find('select.Size'));
@@ -106,8 +106,8 @@ function VariantOptions(params) {
     //   return $(i).data('rel') 
     // });
     //Grab selected Size
-    var tmp = $('select.Size').val();
-    var opt = $('select.Size').find('option[value="'+tmp+'"]');
+    var tmp = $(wrapper).find('select.Size').val();
+    var opt = $(wrapper).find('select.Size').find('option[value="'+tmp+'"]');
     sels.push(opt.data('rel'));
     //Grab selected color
 
@@ -190,9 +190,9 @@ function VariantOptions(params) {
         return to_f(a) < to_f(b) ? -1 : 1;
       });
       if (prices.length == 1) {
-        $('#product-price .price').html('<span class="price assumed">' + prices[0] + '</span>');
+        $(wrapper).find('#product-price .price').html('<span class="price assumed">' + prices[0] + '</span>');
       } else {
-        $('#product-price .price').html('<span class="price from">' + prices[0] + '</span> - <span class="price to">' + prices[prices.length - 1] + '</span>');
+        $(wrapper).find('#product-price .price').html('<span class="price from">' + prices[0] + '</span> - <span class="price to">' + prices[prices.length - 1] + '</span>');
       }
       return false;
     }
