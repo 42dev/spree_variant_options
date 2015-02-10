@@ -26,15 +26,5 @@
               - unless (variants = @product.variants_for_option_value(v)).empty?
                 - outOfStockClass = (variants.sum(&:total_on_hand) == 0) ? "out-of-stock" : "in-stock"
                 = image_tag v.image.url, class: "color #{outOfStockClass} option-value", data:{rel: "#{type.id}-#{v.id}"}
-        / %ul.variant-option-values
-        / - values.sort_by(&:position).each do |value|
-        /   - classes = ["option-value"]
-        /   - unless (variants = @product.variants_for_option_value(value)).empty? 
-        /     - classes << (variants.sum(&:total_on_hand) > 0 ? "in-stock" : "out-of-stock" ) if index == 0
-        /     %li
-        /       = link_to value.has_image? ? image_tag(value.image.url, alt: value.presentation) : content_tag(:span, value.presentation), "#", title: value.presentation, class: classes.join(" "), rel: "#{type.id}-#{value.id}"
-        /   %li.clear-option
-        /     = link_to "X", "#clear", :class => "clear-button clear-index-#{index}"
-        /   %li.clear
     = hidden_field_tag "variant_id", "", id: "variant_id", class: "hidden"
     = render "spree/products/init_variant_options_js"

@@ -43,7 +43,7 @@ function VariantOptions(params) {
   var buttons;
 
 
-  function init() {
+  init = function() {
     divs = $(wrapper).find('#product-variants .variant-options');
     //Enable Colors
     update();
@@ -257,12 +257,6 @@ function VariantOptions(params) {
     show_all_variant_images();
   }
 
-
-  // function handle_clear(evt) {
-  //   evt.preventDefault();
-  //   clear(get_index(this));
-  // }
-
   function handle_size_change(evt) {
     variant = null;
     selection = [];
@@ -304,5 +298,7 @@ function VariantOptions(params) {
   }
 
   $(document).ready(init);
+  $(document).on('page:load', init);
+  $(document).on('page:change', init);
 
 };
